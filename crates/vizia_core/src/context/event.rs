@@ -68,7 +68,7 @@ pub struct EventContext<'a> {
     pub(crate) focused: &'a mut Entity,
     pub(crate) hovered: &'a Entity,
     pub(crate) triggered: &'a mut Entity,
-    pub(crate) style: &'a mut Style,
+    pub style: &'a mut Style,
     pub(crate) entity_identifiers: &'a HashMap<String, Entity>,
     pub cache: &'a mut CachedData,
     pub(crate) tree: &'a Tree<Entity>,
@@ -78,8 +78,8 @@ pub struct EventContext<'a> {
         &'a mut HashMap<Entity, Box<dyn Fn(&mut dyn ViewHandler, &mut EventContext, &mut Event)>>,
     pub(crate) resource_manager: &'a mut ResourceManager,
     pub(crate) text_context: &'a mut TextContext,
-    pub(crate) modifiers: &'a Modifiers,
-    pub(crate) mouse: &'a MouseState<Entity>,
+    pub modifiers: &'a Modifiers,
+    pub mouse: &'a MouseState<Entity>,
     pub(crate) event_queue: &'a mut VecDeque<Event>,
     pub(crate) event_schedule: &'a mut BinaryHeap<TimedEvent>,
     pub(crate) next_event_id: &'a mut usize,
@@ -949,7 +949,7 @@ impl<'a> EventContext<'a> {
         self.style.live.insert(self.current, live);
     }
 
-    /// Sets the view, by id name, which labels the current view for accessibility.  
+    /// Sets the view, by id name, which labels the current view for accessibility.
     pub fn labelled_by(&mut self, id: &str) {
         if let Some(entity) = self.resolve_entity_identifier(id) {
             self.style.labelled_by.insert(self.current, entity);
@@ -1119,7 +1119,7 @@ impl<'a> EventContext<'a> {
     /// `duration` - An optional duration for the timer. Pass `None` for a continuos timer.
     /// `callback` - A callback which is called on when the timer is started, ticks, and stops. Disambiguated by the `TimerAction` parameter of the callback.
     ///
-    /// Returns a `Timer` id which can be used to start and stop the timer.  
+    /// Returns a `Timer` id which can be used to start and stop the timer.
     ///
     /// # Example
     /// Creates a timer which calls the provided callback every second for 5 seconds:
@@ -1132,7 +1132,7 @@ impl<'a> EventContext<'a> {
     ///         TimerAction::Start => {
     ///             println!("Start timer");
     ///         }
-    ///     
+    ///
     ///         TimerAction::Tick(delta) => {
     ///             println!("Tick timer: {:?}", delta);
     ///         }
