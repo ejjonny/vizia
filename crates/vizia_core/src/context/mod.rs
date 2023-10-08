@@ -84,7 +84,7 @@ pub struct Context {
     pub(crate) listeners:
         HashMap<Entity, Box<dyn Fn(&mut dyn ViewHandler, &mut EventContext, &mut Event)>>,
     pub(crate) global_listeners: Vec<Box<dyn Fn(&mut EventContext, &mut Event)>>,
-    pub style: Style,
+    pub(crate) style: Style,
     pub(crate) cache: CachedData,
 
     pub(crate) canvases: HashMap<Entity, crate::prelude::Canvas>,
@@ -530,7 +530,7 @@ impl Context {
     }
 
     /// Add a style string to the application.
-    pub fn add_theme(&mut self, theme: &str) {
+    pub(crate) fn add_theme(&mut self, theme: &str) {
         self.resource_manager.themes.push(theme.to_owned());
 
         EventContext::new(self).reload_styles().expect("Failed to reload styles");

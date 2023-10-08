@@ -213,7 +213,7 @@ pub struct Style {
     pub(crate) scale: AnimatableSet<Scale>,
 
     // Border
-    pub border_width: AnimatableSet<LengthOrPercentage>,
+    pub(crate) border_width: AnimatableSet<LengthOrPercentage>,
     pub(crate) border_color: AnimatableSet<Color>,
 
     // Border Shape
@@ -246,7 +246,7 @@ pub struct Style {
     pub(crate) text_align: StyleSet<TextAlign>,
     pub(crate) font_family: StyleSet<Vec<FamilyOwned>>,
     pub(crate) font_color: AnimatableSet<Color>,
-    pub font_size: AnimatableSet<FontSize>,
+    pub(crate) font_size: AnimatableSet<FontSize>,
     pub(crate) font_weight: StyleSet<FontWeight>,
     pub(crate) font_style: StyleSet<FontStyle>,
     pub(crate) font_stretch: StyleSet<FontStretch>,
@@ -309,7 +309,7 @@ pub struct Style {
     pub needs_access_update: SparseSet<bool>,
 
     /// This includes both the system's HiDPI scaling factor as well as `cx.user_scale_factor`.
-    pub dpi_factor: f64,
+    pub(crate) dpi_factor: f64,
 }
 
 impl Style {
